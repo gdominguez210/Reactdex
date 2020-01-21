@@ -3,10 +3,6 @@ import { getPokemon } from '../util/pokemon_util';
 
 const App = () => {
 
-    useEffect(() => {
-        getPokemon();
-    })
-
     return 'Hello world';
 }
 
