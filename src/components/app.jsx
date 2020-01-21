@@ -1,9 +1,11 @@
 import React, { useEffect } from 'react';
-import { getPokemon } from '../util/pokemon_util';
-
+import { PokemonUI } from './pokemon/pokemon'
+import { getRandomId } from '../util/pokemon_util'
 const App = () => {
 
-    return 'Hello world';
+    return (
+        <PokemonUI pokeId={getRandomId()} />
+    )
 }
 
 export default App;
