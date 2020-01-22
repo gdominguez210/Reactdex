@@ -7,19 +7,12 @@ export const PokemonUI = (props) => {
     const [pokemon, setPokemon] = useState(null);
 
     useEffect(() => {
-        requestPokemon(identifier, setPokemon);
+        API.requestPokemon(identifier, setPokemon);
     }, []);
 
     const [pokemonType, setPokemonType] = useState(null);
     useEffect(() => {
-        const requestType = async () => {
-            const fetchedType = await getType(props.pokeType);
-            console.log(fetchedType);
-            const pokemonOfType = getPokemonOfType(fetchedType);
-            console.log(pokemonOfType);
-            setPokemonType(pokemonOfType)
-        }
-        requestType();
+        API.requestType(pokeType, setPokemonType);
     }, [])
     return (
         pokemon ? <PokemonItem pokemon={pokemon} /> : null
