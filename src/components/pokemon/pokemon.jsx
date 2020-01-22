@@ -1,18 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { getPokemon, getPokemonOfType, getType } from '../../util/pokemon_util';
+import * as API from '../../util/pokemon_util';
 import { PokemonItem } from './pokemon_item'
 
 export const PokemonUI = (props) => {
-
+    const { identifier, pokeType } = props;
     const [pokemon, setPokemon] = useState(null);
 
     useEffect(() => {
-        const requestPokemon = async () => {
-            const fetchedPokemon = await getPokemon(props.pokeId);
-            console.log(fetchedPokemon);
-            setPokemon(fetchedPokemon);
-        }
-        requestPokemon();
+        requestPokemon(identifier, setPokemon);
     }, []);
 
     const [pokemonType, setPokemonType] = useState(null);

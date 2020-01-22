@@ -4,7 +4,7 @@ import { getRandomId, getRandomTypeId } from '../util/pokemon_util'
 const App = () => {
 
     return (
-        <PokemonUI pokeId={getRandomId()} pokeType={getRandomTypeId()} />
+        <PokemonUI identifier={62} pokeType={getRandomTypeId()} />
     )
 }
 
