@@ -6,7 +6,7 @@ export const PokemonItem = (props) => {
 
     const { pokemon } = props;
     const { name, sprites, id, stats, moves, types, abilities } = pokemon;;
-    const typeItems = types.map(item => <span className="type">{item.type.name}</span>)
+    const typeItems = types.map(item => <span className="type" key={item.type.name}> {item.type.name}</span >)
     return (
         <div className="pokemon-item" style={styles.item}>
             <div className="inner-wrap" style={styles.innerWrap}>
