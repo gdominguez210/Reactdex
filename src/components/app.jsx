@@ -1,10 +1,14 @@
 import React, { useEffect } from 'react';
 import { PokemonUI } from './pokemon/pokemon'
 import { getRandomId, getRandomTypeId } from '../util/pokemon_util'
-const App = () => {
+import { Provider } from 'react-redux';
+
+const App = ({ store }) => {
 
     return (
-        <PokemonUI identifier={getRandomId()} pokeType={getRandomTypeId()} />
+        <Provider store={store}>
+            <PokemonUI test={'test'} identifier={getRandomId()} pokeType={getRandomTypeId()} />
+        </Provider>
     )
 }
 
