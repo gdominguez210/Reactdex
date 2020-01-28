@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { getPokemon } from '../../util/pokemon_util';
+import { getPokemon } from '../../util/pokemon_api_util';
 import * as styles from '../../styles/pokemonStyles';
 
 export const PokemonItem = (props) => {

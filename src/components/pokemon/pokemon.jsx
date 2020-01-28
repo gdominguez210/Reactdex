@@ -5,10 +5,9 @@ import * as API from '../../util/pokemon_api_util';
 import { extractPokemon } from '../../util/pokemon_util';
 import { PokemonItem } from './pokemon_item'
 import { receivePokemon } from '../../actions/pokemon_actions';
-
 export const PokemonUI = (props) => {
 
-    const { identifier, pokeType } = props;
+    const { identifier } = props;
     const dispatch = useDispatch();
     const pokemonState = useSelector(selectPokemon, shallowEqual);
     const pokemon = extractPokemon(pokemonState);
@@ -16,6 +15,10 @@ export const PokemonUI = (props) => {
     useEffect(() => { API.requestPokemon(identifier, dispatch, receivePokemon) }, []);
 
     return (
-        pokemon ? <PokemonItem pokemon={pokemon} /> : null
-    )
+        <section className="container">
+            {props.children}
+            <div className="pokemon-container">
+                {pokemon ? <PokemonItem pokemon={pokemon} /> : null}
+            </div>
+        </section>)
 }

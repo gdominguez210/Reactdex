@@ -1,7 +1,7 @@
 export const item = {
     padding: "20px",
     border: "1px solid #dddddd",
-    maxWidth: "200px",
+    minWidth: "200px",
     borderRadius: "4px",
     display: 'flex'
 }
