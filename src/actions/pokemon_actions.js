@@ -1,5 +1,5 @@
-import * as API from '../util/pokemon_util';
-
+import * as API from '../util/pokemon_api_util';
+import { useDispatch } from 'react-redux';
 export const RECEIVE_POKEMON = "RECEIVE_POKEMON";
 
 
@@ -9,5 +9,3 @@ export const receivePokemon = payload => {
         payload
     }
 }
-
-export const fetchPokemon = id => dispatch => API.requestPokemon(id, dispatch);
