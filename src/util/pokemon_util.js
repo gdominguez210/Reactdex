@@ -12,3 +12,7 @@ export const getPokemonOfType = (object) => {
 export const extractPokemon = obj => {
     return Object.values(obj)[0];
 }
+
+export const capitalize = (string) => {
+    return string.slice(0, 1).toUpperCase() + string.slice(1);
+}

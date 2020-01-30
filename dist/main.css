@@ -40,3 +40,13 @@ section.container {
     align-items: center;
     justify-content: center;
 }
+
+.pokemon-image-container {
+    position: relative;
+    text-align: center;
+    min-height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
