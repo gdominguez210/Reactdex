@@ -2,11 +2,13 @@ import React, { useState, useEffect } from 'react';
 
 import * as styles from '../../styles/pokemonStyles';
 import { capitalize } from '../../util/pokemon_util';
+import { StatRadar } from '../graph/stat_radar_graph';
 export const PokemonItem = (props) => {
 
 
     const { pokemon } = props;
     const { name, sprites, id, stats, moves, types, abilities } = pokemon;
+    console.log(stats);
     let sortedTypes = types.sort((a, b) => a.slot - b.slot);
     const typeItems = sortedTypes.map(item => <span className="type" style={styles.typeColor(item.type.name)} key={item.type.name}> {capitalize(item.type.name)} </span >)
     return (
@@ -19,6 +21,7 @@ export const PokemonItem = (props) => {
                 <div className="types">
                     {typeItems}
                 </div>
+                <StatRadar stats={stats} />
             </div>
         </div>
     )

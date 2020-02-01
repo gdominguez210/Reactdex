@@ -16,3 +16,32 @@ export const extractPokemon = obj => {
 export const capitalize = (string) => {
     return string.slice(0, 1).toUpperCase() + string.slice(1);
 }
+
+export const handleStats = (stats) => {
+    let data = {
+        variables: [],
+        sets: [{
+            key: 'stats',
+            label: 'stats',
+            values: {}
+        }
+        ]
+    };
+
+    stats.forEach((statItem) => {
+        let statName = parseStatName(statItem.stat.name);
+        data['variables'].push({ key: statName, label: formatStatName(statName) })
+        console.log(statItem, statName);
+        data['sets'][0]['values'][statName] = statItem.base_stat;
+    })
+    console.log(data);
+    return data;
+}
+
+const formatStatName = (statName) => {
+
+    let statPhrase = statName.split(' ');
+    let formattedStatName = statPhrase.map(word => capitalize(word));
+    return formattedStatName.join(' ');
+}
+const parseStatName = (stat) => stat.split('-').join(' ');
