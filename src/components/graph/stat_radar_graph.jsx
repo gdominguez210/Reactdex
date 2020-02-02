@@ -5,9 +5,9 @@ export const StatRadar = (props) => {
     const { stats } = props;
     console.log(stats);
     return <Radar
-        width={250}
-        height={250}
-        padding={0}
+        width={200}
+        height={200}
+        padding={10}
         domainMax={255}
         highlighted={null}
         data={handleStats(stats)}

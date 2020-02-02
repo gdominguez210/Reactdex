@@ -14,15 +14,21 @@ export const PokemonItem = (props) => {
     return (
         <div className="pokemon-item" style={styles.item}>
             <div className="inner-wrap" style={styles.innerWrap}>
-                <div className="pokemon-image-container">
-                    <img src={sprites.front_default} style={styles.image} />
+                <div className="pokemon-stats">
+                    <StatRadar stats={stats} />
                 </div>
-                <h1>{capitalize(name)}</h1>
-                <div className="types">
-                    {typeItems}
+                <div className="pokemon-details" >
+                    <div className="pokemon-image-container">
+                        <img src={sprites.front_default} style={styles.image} />
+                    </div>
+
+                    <h1>{capitalize(name)}</h1>
+                    <div className="types">
+                        {typeItems}
+                    </div>
                 </div>
-                <StatRadar stats={stats} />
+
             </div>
-        </div>
+        </div >
     )
 }
