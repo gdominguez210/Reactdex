@@ -3,8 +3,10 @@ import { useSelector, useDispatch, shallowEqual } from 'react-redux';
 import { selectPokemon } from '../../selectors/pokemon_selector';
 import * as API from '../../util/pokemon_api_util';
 import { extractPokemon } from '../../util/pokemon_util';
-import { PokemonItem } from './pokemon_item'
+import { StyledPokemonItem } from './pokemon_item/styled_pokemon_item';
 import { receivePokemon } from '../../actions/pokemon_actions';
+import styled from 'styled-components';
+
 export const PokemonUI = (props) => {
 
     const { identifier } = props;
@@ -18,7 +20,7 @@ export const PokemonUI = (props) => {
         <section className="container">
             {props.children}
             <div className="pokemon-container">
-                {pokemon ? <PokemonItem pokemon={pokemon} /> : null}
+                {pokemon ? <StyledPokemonItem pokemon={pokemon} /> : null}
             </div>
         </section>)
 }

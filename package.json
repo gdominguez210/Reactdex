@@ -36,12 +36,14 @@
     "redux": "^4.0.5",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
+    "styled-components": "^5.0.0",
     "thunk": "0.0.1",
     "webpack": "^4.41.5",
     "webpack-cli": "^3.3.10"
   },
   "devDependencies": {
     "@babel/plugin-proposal-class-properties": "^7.8.3",
-    "@babel/plugin-transform-regenerator": "^7.8.3"
+    "@babel/plugin-transform-regenerator": "^7.8.3",
+    "babel-plugin-styled-components": "^1.10.7"
   }
 }

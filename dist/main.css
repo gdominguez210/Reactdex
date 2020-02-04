@@ -33,20 +33,3 @@ section.container {
     border-radius: 4px;
     margin-right: 10px;
 }
-
-.pokemon-container {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.pokemon-image-container {
-    position: relative;
-    text-align: center;
-    min-height: 200px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-}
