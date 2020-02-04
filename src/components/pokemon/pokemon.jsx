@@ -9,7 +9,7 @@ import styled from 'styled-components';
 
 export const PokemonUI = (props) => {
 
-    const { identifier } = props;
+    const { children, identifier } = props;
     const dispatch = useDispatch();
     const pokemonState = useSelector(selectPokemon, shallowEqual);
     const pokemon = extractPokemon(pokemonState);
@@ -18,7 +18,7 @@ export const PokemonUI = (props) => {
 
     return (
         <section className="container">
-            {props.children}
+            {children}
             <div className="pokemon-container">
                 {pokemon ? <StyledPokemonItem pokemon={pokemon} /> : null}
             </div>

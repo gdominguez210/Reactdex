@@ -38,6 +38,18 @@ export const handleStats = (stats) => {
     return data;
 }
 
+export const parseMoves = (moves) => {
+
+    return moves.map(item => {
+
+        return {
+            name: item.move.name,
+            learn_method: item.version_group_details[0].move_learn_method.name,
+            level_learned: item.version_group_details[0].move_learn_method.name = 'level-up' ? item.version_group_details[0].level_learned_at : '-',
+            url: item.move.url
+        }
+    });
+}
 const formatStatName = (statName) => {
 
     let statPhrase = statName.split(' ');

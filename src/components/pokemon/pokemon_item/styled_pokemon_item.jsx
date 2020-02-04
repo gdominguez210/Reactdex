@@ -4,14 +4,20 @@ import { PokemonItem } from './pokemon_item';
 
 export const StyledPokemonItem = styled(PokemonItem)`
     .pokemon-item {
-        max-width: 200px;
         padding: 20px;
         border: 1px solid #eeeeee;
         border-radius: 4px;
-        margin: 20px auto;
     }
 
     .pokemon-details {
         text-align: center;
+    }
+
+    .inner-wrap {
+        display:flex;
+    }
+
+    .inner-wrap > div {
+        flex: 1;
     }
 `
