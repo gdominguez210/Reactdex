@@ -4,19 +4,15 @@ export const getRandomTypeId = () => {
     let id = Math.floor(Math.random() * (POKEMON_TYPES.length - 0)) - 0;
     return POKEMON_TYPES[id];
 }
-
 export const getPokemonOfType = (object) => {
     return object.pokemon;
 }
-
 export const extractPokemon = obj => {
     return Object.values(obj)[0];
 }
-
 export const capitalize = (string) => {
     return string.slice(0, 1).toUpperCase() + string.slice(1);
 }
-
 export const handleStats = (stats) => {
     let data = {
         variables: [],
@@ -37,7 +33,6 @@ export const handleStats = (stats) => {
     console.log(data);
     return data;
 }
-
 export const parseMoves = (moves) => {
 
     return moves.map(item => {
