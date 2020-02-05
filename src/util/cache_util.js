@@ -1,7 +1,7 @@
 
-// const cache = require('persistent-cache');
-let appStorage = cache.get('jsPokedex');
-if (!appStorage) cache.put('jsPokedex', {});
+// // const cache = require('persistent-cache');
+// let appStorage = cache.get('jsPokedex');
+// if (!appStorage) cache.put('jsPokedex', {});
 
 export const checkCache = (item) => {
     let appCache = cache.get('jsPokedex');

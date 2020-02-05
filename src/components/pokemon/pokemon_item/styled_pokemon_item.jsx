@@ -3,8 +3,11 @@ import styled from 'styled-components'
 import { PokemonItem } from './pokemon_item';
 
 export const StyledPokemonItem = styled(PokemonItem)`
+    height: 100%;
+
     .pokemon-item {
         padding: 20px;
+        height: 100%;
         border: 1px solid #eeeeee;
         border-radius: 4px;
     }
@@ -19,5 +22,7 @@ export const StyledPokemonItem = styled(PokemonItem)`
 
     .inner-wrap > div {
         flex: 1;
+        max-height: 100%;
+        height: 100%;
     }
 `

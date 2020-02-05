@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { handleName } from '../../../../util/pokemon_util';
 
 export const PokemonMoveItem = (props) => {
     const { className, move } = props;
@@ -7,8 +7,8 @@ export const PokemonMoveItem = (props) => {
     return (
         <div className={className}>
             <ul>
-                <li>{move.name}</li>
-                <li>{move.learn_method}</li>
+                <li>{handleName(move.name)}</li>
+                <li>{handleName(move.learn_method)}</li>
                 <li>{move.level_learned}</li>
             </ul>
         </div>

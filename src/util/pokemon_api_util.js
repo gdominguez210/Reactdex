@@ -1,6 +1,6 @@
 
 import * as storage from './storage_util';
-import * as cache from './cache_util';
+
 
 export const getType = async (string) => {
     let response = await fetch(`https://pokeapi.co/api/v2/type/${string}`);
@@ -16,12 +16,11 @@ export const getPokemon = async (pokeId) => {
 
 export const requestPokemon = async (id, dispatch, action) => {
 
-    let fetchedPokemon = cache.getFromCache(id);
-    console.log(fetchedPokemon);
+    let fetchedPokemon = storage.getFromStorage(id);
+
     if (!fetchedPokemon) {
         fetchedPokemon = await getPokemon(id);
-        console.log('new data');
-        cache.addToCache(id, fetchedPokemon);
+        storage.addToStorage(id, fetchedPokemon);
     }
 
     dispatch(action(fetchedPokemon));

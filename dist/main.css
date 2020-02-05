@@ -1,3 +1,6 @@
+* {
+    box-sizing:border-box;
+}
 div#app {
     height: 100%;
     display: flex;
@@ -32,4 +35,18 @@ section.container {
     padding: 10px;
     border-radius: 4px;
     margin-right: 10px;
+}
+
+.search-bar-container {
+    min-height: 85px;
+    box-sizing: border-box;
+    align-items: center;
+}
+
+.pokemon-container {
+    height: calc(100% - 85px);
+}
+
+.inner-wrap {
+    height: 100%;
 }

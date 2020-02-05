@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { typeColor } from '../../../styles/pokemonStyles';
 import { StatRadar } from '../../graph/stat_radar_graph';
-import { PokemonMoves } from '../moves/moves'
+import { StyledPokemonMoves } from '../moves/styled_moves'
 import { PokemonDetails } from './pokemon_details/pokemon_details';
 import { capitalize } from '../../../util/pokemon_util';
 export const PokemonItem = (props) => {
@@ -16,10 +16,10 @@ export const PokemonItem = (props) => {
             <div className="pokemon-item">
                 <div className="inner-wrap">
                     <div className="pokemon-detail-wrap">
-                        <StatRadar stats={stats} />
                         <PokemonDetails sprites={sprites} types={typeItems} name={name} />
+                        {/* <StatRadar stats={stats} /> */}
                     </div>
-                    <PokemonMoves moves={moves} />
+                    <StyledPokemonMoves moves={moves} />
                 </div>
             </div>
         </div >

@@ -25,30 +25,60 @@ export const handleStats = (stats) => {
     };
 
     stats.forEach((statItem) => {
-        let statName = parseStatName(statItem.stat.name);
-        data['variables'].push({ key: statName, label: formatStatName(statName) })
-        console.log(statItem, statName);
+        let statName = parseName(statItem.stat.name);
+        data['variables'].push({ key: statName, label: formatName(statName) })
         data['sets'][0]['values'][statName] = statItem.base_stat;
     })
-    console.log(data);
     return data;
 }
 export const parseMoves = (moves) => {
 
-    return moves.map(item => {
-
+    let parsedMoves = moves.map(item => {
         return {
+            order: moveOrder(item),
             name: item.move.name,
             learn_method: item.version_group_details[0].move_learn_method.name,
             level_learned: item.version_group_details[0].move_learn_method.name = 'level-up' ? item.version_group_details[0].level_learned_at : '-',
             url: item.move.url
         }
     });
+    console.log(parsedMoves);
+    let sortedParsedMoves = parsedMoves.sort(sortByOrder);
+    sortedParsedMoves = sortedParsedMoves.sort(sortByLevel);
+    return sortedParsedMoves;
 }
-const formatStatName = (statName) => {
+export const handleName = (name) => {
+    console.log(name);
+    let parsedName = parseName(name);
+    let formatted = formatName(parsedName);
+    return formatted;
+}
 
-    let statPhrase = statName.split(' ');
-    let formattedStatName = statPhrase.map(word => capitalize(word));
-    return formattedStatName.join(' ');
+const moveOrder = (move) => {
+    switch (move.version_group_details[0].move_learn_method.name) {
+        case 'egg':
+            return 1;
+        case 'level-up':
+            return 2;
+        case 'tutor':
+            return 3;
+        case 'machine':
+            return 4;
+        default:
+            return 0;
+    }
 }
-const parseStatName = (stat) => stat.split('-').join(' ');
+
+
+const sortByOrder = (a, b) => a.order - b.order;
+const sortByLevel = (a, b) => {
+    if (a.level_learned > 0 && b.level_learned > 0) return a.level_learned - b.level_learned
+}
+
+const formatName = (name) => {
+    console.log(name);
+    let namePhrase = name.split(' ');
+    let formattedName = namePhrase.map(word => capitalize(word));
+    return formattedName.join(' ');
+}
+const parseName = (name) => name.split('-').join(' ');
