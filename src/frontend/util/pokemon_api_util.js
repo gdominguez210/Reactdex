@@ -16,11 +16,11 @@ export const getPokemon = async (pokeId) => {
 
 export const requestPokemon = async (id, dispatch, action) => {
 
-    let fetchedPokemon = storage.getFromStorage(id);
+    let fetchedPokemon = await storage.getFromStorage(id);
 
     if (!fetchedPokemon) {
         fetchedPokemon = await getPokemon(id);
-        storage.addToStorage(id, fetchedPokemon);
+        await storage.addToStorage(id, fetchedPokemon);
     }
 
     dispatch(action(fetchedPokemon));
