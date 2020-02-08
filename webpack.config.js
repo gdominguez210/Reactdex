@@ -1,5 +1,5 @@
 const path = require('path');
-const outputDir = './dist';
+const outputDir = './dist/';
 
 module.exports = {
     entry: path.resolve(__dirname, "src/frontend", "index.js"),

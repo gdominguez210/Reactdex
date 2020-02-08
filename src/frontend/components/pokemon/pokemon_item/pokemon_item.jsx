@@ -8,7 +8,6 @@ export const PokemonItem = (props) => {
 
     const { pokemon, className } = props;
     const { name, sprites, id, stats, moves, types, abilities } = pokemon;
-    console.log(types);
     const sortedTypes = types.sort((a, b) => a.slot - b.slot);
     const typeItems = sortedTypes.map(item => <span className="type" style={typeColor(item.type.name)} key={item.type.name}> {capitalize(item.type.name)} </span >)
 

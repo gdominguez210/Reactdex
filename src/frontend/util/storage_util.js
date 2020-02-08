@@ -7,21 +7,22 @@ export const checkStorage = async (item) => {
 }
 
 export const addToStorage = async (key, value) => {
-    let appStorage = JSON.parse(await storage.getItem('jsPokedex'));
-    appStorage[key] = value;
-    await storage.setItem('jsPokedex', JSON.stringify(appStorage));
-    console.log(storage);
+    let body = {
+        method: 'POST',
+        mode: 'cors',
+        cache: 'no-cache',
+        credentials: 'same-origin',
+        headers: { 'Content-Type': 'application/json' },
+        redirect: 'follow',
+        referrerPolicy: 'no-referrer',
+        body: JSON.stringify({ [key]: value })
+    }
+    await fetch(`/api/storage/`, body);
 }
-
-// export const getFromStorage = async (item) => {
-//     let appStorage = JSON.parse(await storage.getItem('jsPokedex'));
-//     return appStorage[item];
-// }
 
 export const getFromStorage = async (item) => {
     let fetchedItem = await fetch(`/api/storage/${item}`);
-    console.log(fetchedItem);
-    return fetchedItem;
+    return await fetchedItem.json();
 }
 export const setUpStorage = async () => {
     await fetch(`/api/storage`);

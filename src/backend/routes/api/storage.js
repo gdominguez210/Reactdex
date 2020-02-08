@@ -9,11 +9,18 @@ router.get('/', async (req, res) => {
     res.send('storage set up');
 })
 
-storage.get('/api/storage/:key', async (req, res) => {
+router.post('/', async (req, res) => {
     await storage.init();
-    console.log(req);
     let appStorage = await storage.getItem('jsPokedex');
-    return res.json(appStorage[req.key])
+    let item = JSON.parse(req.body);
+    console.log(item);
+})
+
+router.get('/:key', async (req, res) => {
+    await storage.init();
+    let appStorage = await storage.getItem('jsPokedex');
+    let item = appStorage[req.params.key] ? appStorage[req.params.key] : {}
+    return res.json(item);
 })
 
 module.exports = router;
