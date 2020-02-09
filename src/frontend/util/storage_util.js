@@ -6,7 +6,7 @@ export const checkStorage = async (item) => {
     return appStorage[item] !== undefined;
 }
 
-export const addToStorage = async (key, value) => {
+export const addToStorage = async (endpoint, key, value) => {
     let body = {
         method: 'POST',
         mode: 'cors',
@@ -16,14 +16,14 @@ export const addToStorage = async (key, value) => {
         redirect: 'follow',
         referrerPolicy: 'no-referrer',
         body: JSON.stringify({
-            'item': { [key]: value }
+            [endpoint]: { [key]: value }
         })
     }
     await fetch(`/api/storage/`, body);
 }
 
-export const getFromStorage = async (item) => {
-    let fetchedItem = await fetch(`/api/storage/${item}`);
+export const getFromStorage = async (endpoint, item) => {
+    let fetchedItem = await fetch(`/api/storage/${endpoint}/${item}`);
     let json = await fetchedItem.json();
     console.log(json);
     return json;

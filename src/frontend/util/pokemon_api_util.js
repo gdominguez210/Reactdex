@@ -16,12 +16,12 @@ export const getPokemon = async (pokeId) => {
 
 export const requestPokemon = async (id, dispatch, action) => {
 
-    let fetchedPokemon = await storage.getFromStorage(id);
+    let fetchedPokemon = await storage.getFromStorage('pokemon', id);
 
     if (fetchedPokemon.error) {
         fetchedPokemon = await getPokemon(id);
         console.log('used api');
-        await storage.addToStorage(id, fetchedPokemon);
+        await storage.addToStorage('pokemon', id, fetchedPokemon);
     }
 
     dispatch(action(fetchedPokemon));
