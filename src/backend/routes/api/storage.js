@@ -12,15 +12,23 @@ router.get('/', async (req, res) => {
 router.post('/', async (req, res) => {
     await storage.init();
     let appStorage = await storage.getItem('jsPokedex');
-    let item = JSON.parse(req.body);
-    console.log(item);
+    let item = req.body.item;
+    let key = Object.keys(item)[0];
+    let value = Object.values(item)[0];
+    console.log(key, value);
+    appStorage[key] = value;
+    storage.setItem('jsPokedex', appStorage);
+    res.json({ [key]: value });
 })
 
 router.get('/:key', async (req, res) => {
     await storage.init();
     let appStorage = await storage.getItem('jsPokedex');
-    let item = appStorage[req.params.key] ? appStorage[req.params.key] : {}
-    return res.json(item);
+    let item = appStorage[req.params.key]
+    console.log(item);
+    if (!item) {
+        return res.status(404).json({ 'error': `not found` })
+    } else { res.json(item) }
 })
 
 module.exports = router;

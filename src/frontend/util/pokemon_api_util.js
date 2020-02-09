@@ -17,10 +17,10 @@ export const getPokemon = async (pokeId) => {
 export const requestPokemon = async (id, dispatch, action) => {
 
     let fetchedPokemon = await storage.getFromStorage(id);
-    console.log(`storage: ${fetchedPokemon}`);
-    if (!fetchedPokemon) {
+
+    if (fetchedPokemon.error) {
         fetchedPokemon = await getPokemon(id);
-        console.log(`api call: ${fetchedPokemon}`);
+        console.log('used api');
         await storage.addToStorage(id, fetchedPokemon);
     }
 

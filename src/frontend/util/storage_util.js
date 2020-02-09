@@ -15,14 +15,18 @@ export const addToStorage = async (key, value) => {
         headers: { 'Content-Type': 'application/json' },
         redirect: 'follow',
         referrerPolicy: 'no-referrer',
-        body: JSON.stringify({ [key]: value })
+        body: JSON.stringify({
+            'item': { [key]: value }
+        })
     }
     await fetch(`/api/storage/`, body);
 }
 
 export const getFromStorage = async (item) => {
     let fetchedItem = await fetch(`/api/storage/${item}`);
-    return await fetchedItem.json();
+    let json = await fetchedItem.json();
+    console.log(json);
+    return json;
 }
 export const setUpStorage = async () => {
     await fetch(`/api/storage`);
