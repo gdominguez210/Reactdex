@@ -3,6 +3,6 @@ import styled from 'styled-components'
 import { PokemonMoves } from './moves';
 
 export const StyledPokemonMoves = styled(PokemonMoves)`
-    max-height: 100%;
-    overflow-y:scroll;
+    // max-height: 100%;
+    // overflow-y:scroll;
 `

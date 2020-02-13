@@ -1,47 +1,58 @@
 import React, { useState, useEffect } from 'react';
 
-export const IntersectionObserver = (props) => {
+export class LocationObserver extends React.Component {
 
-    const [hasIntersected, setIntersected] = useState(false);
+    constructor(props) {
+        super(props);
 
-    const observerOptions = {
-        root: props.root || null,
-        rootMargin: props.margin || "0px",
-        threshold: props.threshold || 0
+        this.state = {
+            hasIntersected: false
+        }
+
+        this.options = {
+            root: this.props.root || null,
+            rootMargin: this.props.margin || "0px",
+            threshold: this.props.threshold || 0
+        }
+
+        this.targetContainerRef = React.createRef();
+        this.observer = null;
     }
 
-    const targetContainerRef = React.createRef();
+    componentDidMount() {
+        this.observer = new IntersectionObserver(this.load, this.options);
+        this.observer.observe(this.targetContainerRef.current);
+    }
 
-    let observer = null;
+    componentWillUnmount() {
+        this.observer.unobserve(this.targetContainerRef.current);
+    }
 
-    const load = (entries) => {
-        const { onIntersection, continueObserving } = props;
+    load = (entries) => {
 
-        if (!continueObserving && !hasIntersected) {
-            const entry = entries.find(entry => entry.target === targetContainerRef.current)
+        const { onIntersection, continueObserving } = this.props;
 
-            if (entry && entries.isIntersecting) {
-                setIntersected(true);
-                onIntersection && onInteresection(entries);
-                observer.unobserve(targetContainerRef.current);
+        if (!continueObserving && !this.state.hasIntersected) {
+            const entry = entries.find(entry => entry.target === this.targetContainerRef.current);
+
+            if (entry && entry.isIntersecting) {
+                this.setState({ hasIntersected: true });
+                onIntersection && onIntersection(entries);
+                this.observer.unobserve(this.targetContainerRef.current);
             }
 
         } else if (continueObserving && onIntersection) {
             onIntersection(entries);
         }
-
     }
 
-    useEffect(() => {
-        observer = new IntersectionObserver(load, observerOptions);
-        observer.observe(targetContainerRef.current);
-        return () => observer.unobserve(targetContainerRef.current);
-    }, []);
+    render() {
+        const { continueObserving, children = null } = this.props;
+        return (
+            <div className="intersectionObserver" ref={this.targetContainerRef}>
+                {continueObserving ? children : this.state.hasIntersected && children}
+            </div>
+        )
+    }
 
-    const { children, continueObserving }
-    return (
-        <div className="intersection-observer" ref={targetContainerRef}>
-            {continueObserving ? children : hasIntersected && children}
-        </div>
-    )
 }

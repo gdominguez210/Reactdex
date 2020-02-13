@@ -2,11 +2,12 @@ import React from 'react';
 import styled from 'styled-components'
 import { PokemonMoveItem } from './move_item';
 
-export const StyledPokemonMoveItem = styled(PokemonMoveItem)`
+const StyledPokemonMoveItem = styled(PokemonMoveItem)`
     border: 1px solid #dddddd;
     border-radius: 4px;
-    padding: 10px;
-    margin: 10px 0px;
+    padding: 20px;
+    margin: 50px 0px;
+    font-size: 2em;
 
     ul {
         display: flex;
@@ -17,3 +18,5 @@ export const StyledPokemonMoveItem = styled(PokemonMoveItem)`
         flex: 1;
     }
 `
+
+export default StyledPokemonMoveItem;

@@ -6,7 +6,8 @@ module.exports = {
     output: {
         path: path.join(__dirname, outputDir),
         filename: 'bundle.js',
-        publicPath: '/dist/'
+        chunkFilename: '[name].bundle.js',
+        publicPath: '/'
     },
     resolve: {
         extensions: ['.js', '.jsx', '*']
