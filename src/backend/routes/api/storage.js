@@ -23,6 +23,7 @@ router.post('/', async (req, res) => {
 router.get('/:endpoint/:key', async (req, res) => {
     await storage.init();
     let appStorage = await storage.getItem('jsPokedex');
+    console.log(req.params.endpoint);
     let item = appStorage[req.params.endpoint][req.params.key];
     if (!item) {
         return res.json({ 'error': `not found` })

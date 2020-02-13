@@ -13,7 +13,6 @@ export const PokemonUI = (props) => {
     const dispatch = useDispatch();
     const pokemonState = useSelector(selectPokemon, shallowEqual);
     const pokemon = extractPokemon(pokemonState);
-
     useEffect(() => { API.requestPokemon(identifier, dispatch, receivePokemon) }, []);
 
     return (

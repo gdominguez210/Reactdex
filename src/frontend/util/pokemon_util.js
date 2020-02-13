@@ -7,8 +7,12 @@ export const getRandomTypeId = () => {
 export const getPokemonOfType = (object) => {
     return object.pokemon;
 }
-export const extractPokemon = obj => {
+export const extractPokemon = (obj) => {
     return Object.values(obj)[0];
+}
+
+export const extractMove = (obj, key) => {
+    return obj[key];
 }
 export const capitalize = (string) => {
     return string.slice(0, 1).toUpperCase() + string.slice(1);
@@ -32,23 +36,21 @@ export const handleStats = (stats) => {
     return data;
 }
 export const parseMoves = (moves) => {
-
+    debugger
     let parsedMoves = moves.map(item => {
         return {
             order: moveOrder(item),
             name: item.move.name,
-            learn_method: item.version_group_details[0].move_learn_method.name,
-            level_learned: item.version_group_details[0].move_learn_method.name = 'level-up' ? item.version_group_details[0].level_learned_at : '-',
+            learn_method: item.version_group_details[0].move_learn_method.name === 0 ? '-' : item.version_group_details[0].move_learn_method.name,
+            level_learned: item.version_group_details[0].move_learn_method.name === 'level-up' ? item.version_group_details[0].level_learned_at : '-',
             url: item.move.url
         }
     });
-    console.log(parsedMoves);
     let sortedParsedMoves = parsedMoves.sort(sortByOrder);
     sortedParsedMoves = sortedParsedMoves.sort(sortByLevel);
     return sortedParsedMoves;
 }
 export const handleName = (name) => {
-    console.log(name);
     let parsedName = parseName(name);
     let formatted = formatName(parsedName);
     return formatted;
@@ -76,7 +78,6 @@ const sortByLevel = (a, b) => {
 }
 
 const formatName = (name) => {
-    console.log(name);
     let namePhrase = name.split(' ');
     let formattedName = namePhrase.map(word => capitalize(word));
     return formattedName.join(' ');

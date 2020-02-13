@@ -25,7 +25,6 @@ export const addToStorage = async (endpoint, key, value) => {
 export const getFromStorage = async (endpoint, item) => {
     let fetchedItem = await fetch(`/api/storage/${endpoint}/${item}`);
     let json = await fetchedItem.json();
-    console.log(json);
     return json;
 }
 export const setUpStorage = async () => {

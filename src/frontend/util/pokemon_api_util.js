@@ -8,6 +8,12 @@ export const getType = async (string) => {
     return type;
 }
 
+export const getMove = async (string) => {
+    let response = await fetch(`https://pokeapi.co/api/v2/move/${string}`);
+    let move = await response.json();
+    return move;
+}
+
 export const getPokemon = async (pokeId) => {
     let response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokeId}`);
     let pokemon = await response.json();
@@ -20,9 +26,20 @@ export const requestPokemon = async (id, dispatch, action) => {
 
     if (fetchedPokemon.error) {
         fetchedPokemon = await getPokemon(id);
-        console.log('used api');
         await storage.addToStorage('pokemon', id, fetchedPokemon);
     }
 
     dispatch(action(fetchedPokemon));
+}
+
+export const requestMove = async (id, dispatch, action) => {
+
+    let fetchedMove = await storage.getFromStorage('moves', id);
+
+    if (fetchedMove.error) {
+        fetchedMove = await getMove(id);
+        await storage.addToStorage('moves', id, fetchedMove);
+    }
+
+    dispatch(action(fetchedMove));
 }

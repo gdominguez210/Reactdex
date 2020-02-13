@@ -5,7 +5,7 @@ const storage = require('./backend/routes/api/storage');
 const port = 5000;
 const bodyParser = require('body-parser');
 
-app.listen(port, () => console.log(`server is running on port ${port}`))
+app.listen(port, () => (`server is running on port ${port}`))
 app.use(express.static('../dist'));
 
 app.get("/", (req, res) => {

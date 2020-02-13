@@ -14,6 +14,15 @@ export const StyledPokemonItem = styled(PokemonItem)`
 
     .pokemon-details {
         text-align: center;
+        font-size: 2em;
+        
+        * {
+            margin: .5em;
+        }
+
+        img {
+            transform: scale(2.5);
+        }
     }
 
     .inner-wrap {

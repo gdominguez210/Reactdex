@@ -11,12 +11,12 @@ export const checkCache = (item) => {
 export const addToCache = (key, value) => {
     let appCache = cache.get('jsPokedex');
     appCache[key] = value;
-    console.log(appCache);
+    (appCache);
     cache.put('jsPokedex', appCache);
 }
 
 export const getFromCache = (item) => {
     let appCache = cache.get('jsPokedex');
-    console.log(appCache);
+    (appCache);
     return appCache[item];
 }
