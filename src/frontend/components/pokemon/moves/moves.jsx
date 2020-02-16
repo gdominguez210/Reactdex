@@ -4,13 +4,7 @@ import { DynamicModule } from '../../lazyload/dynamic_module/dynamic_module'
 import { LocationObserver } from '../../lazyload/intersection_observer/intersection_observer';
 export const PokemonMoves = (props) => {
     const { className, moves } = props;
-    debugger
     const parsedMoves = parseMoves(moves);
-    const style = {
-        fontSize: '2em',
-        margin: '50px 0px',
-        padding: '20px'
-    }
 
     const [limit, setLimit] = useState(5);
     const moveItems = parsedMoves.map((move, idx) => {
