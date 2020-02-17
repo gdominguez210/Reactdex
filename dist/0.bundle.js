@@ -61,22 +61,6 @@ var StyledPokemonMoveItem = Object(styled_components__WEBPACK_IMPORTED_MODULE_1_
 })(["border:1px solid #dddddd;border-radius:4px;padding:20px;margin:50px 0px;font-size:2em;ul{display:flex;justify-content:space-between;}ul > li{flex:1;}"]);
 /* harmony default export */ __webpack_exports__["default"] = (StyledPokemonMoveItem);
 
-/***/ }),
-
-/***/ "./src/frontend/selectors/moves_selector.js":
-/*!**************************************************!*\
-  !*** ./src/frontend/selectors/moves_selector.js ***!
-  \**************************************************/
-/*! exports provided: selectMoves */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "selectMoves", function() { return selectMoves; });
-var selectMoves = function selectMoves(state) {
-  return state.entities.moves;
-};
-
 /***/ })
 
 }]);
