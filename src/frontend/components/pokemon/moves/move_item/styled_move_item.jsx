@@ -6,17 +6,25 @@ const StyledPokemonMoveItem = styled(PokemonMoveItem)`
     border: 1px solid #dddddd;
     border-radius: 4px;
     padding: 20px;
-    margin: 50px 0px;
+    margin: 80px 0px;
     font-size: 2em;
+    color: #FFFFFF;
+    text-shadow: 0px 0px 5px #333333;
 
     ul {
         display: flex;
         justify-content: space-between;
+
+        > li {
+        flex: 1;
+
+            :not(:first-child){
+                text-align: center;
+            }
+        }
     }
 
-    ul > li {
-        flex: 1;
-    }
 `
+
 
 export default StyledPokemonMoveItem;

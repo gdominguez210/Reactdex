@@ -1,4 +1,4 @@
-import { RECEIVE_MOVE } from '../actions/moves_actions';
+import { RECEIVE_MOVE, RECEIVE_MOVES } from '../actions/moves_actions';
 
 const movesReducer = (state = {}, action) => {
 

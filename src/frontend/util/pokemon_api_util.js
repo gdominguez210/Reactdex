@@ -32,29 +32,29 @@ export const requestPokemon = async (id, dispatch, action) => {
     dispatch(action(fetchedPokemon));
 }
 
-export const requestMove = async (id, dispatch, action) => {
+export const requestMove = async (move, dispatch, action) => {
 
-    let fetchedMove = await storage.getFromStorage('moves', id);
+    let fetchedMove = await storage.getFromStorage('moves', move.name);
 
     if (fetchedMove.error) {
-        fetchedMove = await getMove(id);
-        await storage.addToStorage('moves', id, fetchedMove);
+        fetchedMove = await getMove(move.name);
+        await storage.addToStorage('moves', move.name, fetchedMove);
     }
 
-    dispatch(action(fetchedMove));
+    dispatch(action({ ...fetchedMove, ...move }));
 }
 
-export const requestMoves = async (ids, dispatch, action) => {
+export const requestMoves = async (moves, dispatch, action) => {
 
-    let fetchedMoves = [];
+    let fetchedMoves = {};
 
-    for (const id of ids) {
-        let fetchedMove = await storage.getFromStorage('moves', id);
+    for (const move of moves) {
+        let fetchedMove = await storage.getFromStorage('moves', move.name);
         if (fetchedMove.error) {
-            fetchedMove = await getMove(id);
-            await storage.addToStorage('moves', id, fetchedMove);
+            fetchedMove = await getMove(move.name);
+            await storage.addToStorage('moves', move.name, fetchedMove);
         }
-        fetchMoves.push(fetchedMove);
+        fetchedMoves[fetchedMove.name] = { ...fetchedMove, ...move };
     }
 
     dispatch(action(fetchedMoves));
