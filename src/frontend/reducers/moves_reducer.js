@@ -7,6 +7,8 @@ const movesReducer = (state = {}, action) => {
     switch (action.type) {
         case RECEIVE_MOVE:
             return Object.assign({}, state, { [action.payload.name]: action.payload });
+        case RECEIVE_MOVES:
+            return action.payload;
         default:
             return state;
     }

@@ -43,3 +43,19 @@ export const requestMove = async (id, dispatch, action) => {
 
     dispatch(action(fetchedMove));
 }
+
+export const requestMoves = async (ids, dispatch, action) => {
+
+    let fetchedMoves = [];
+
+    for (const id of ids) {
+        let fetchedMove = await storage.getFromStorage('moves', id);
+        if (fetchedMove.error) {
+            fetchedMove = await getMove(id);
+            await storage.addToStorage('moves', id, fetchedMove);
+        }
+        fetchMoves.push(fetchedMove);
+    }
+
+    dispatch(action(fetchedMoves));
+}

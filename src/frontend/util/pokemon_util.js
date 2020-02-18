@@ -56,6 +56,10 @@ export const handleName = (name) => {
     return formatted;
 }
 
+export const handleBulkMoves = (moves, limit) => {
+
+}
+
 const moveOrder = (move) => {
     switch (move.version_group_details[0].move_learn_method.name) {
         case 'egg':
