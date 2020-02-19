@@ -10,7 +10,7 @@ const App = ({ store }) => {
     return (
         <Provider store={store}>
             <StyledSidebar />
-            <PokemonUI test={'test'} identifier={1} pokeType={getRandomTypeId()}>
+            <PokemonUI test={'test'} identifier={'bulbasaur'} pokeType={getRandomTypeId()}>
                 <SearchBar>
 
                 </SearchBar>

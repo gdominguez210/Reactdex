@@ -7,7 +7,7 @@ import { capitalize } from '../../../util/pokemon_util';
 export const PokemonItem = (props) => {
 
     const { pokemon, className } = props;
-    const { name, sprites, id, stats, moves, types, abilities } = pokemon;
+    const { name, sprite, sprites, id, stats, moves, types, abilities } = pokemon;
     const sortedTypes = types.sort((a, b) => a.slot - b.slot);
     const typeItems = sortedTypes.map(item => <span className="type" style={typeColor(item.type.name)} key={item.type.name}> {capitalize(item.type.name)} </span >)
 
@@ -16,7 +16,7 @@ export const PokemonItem = (props) => {
             <div className="pokemon-item">
                 <div className="inner-wrap">
                     <div className="pokemon-detail-wrap">
-                        <PokemonDetails sprites={sprites} types={typeItems} name={name} />
+                        <PokemonDetails sprite={sprite} sprites={sprites} types={typeItems} name={name} />
                         {/* <StatRadar stats={stats} /> */}
                     </div>
                     <StyledPokemonMoves moves={moves} />

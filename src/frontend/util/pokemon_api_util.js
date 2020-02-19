@@ -1,6 +1,6 @@
 
 import * as storage from './storage_util';
-
+import { AWS_BUCKET_URL } from './constants';
 
 export const getType = async (string) => {
     let response = await fetch(`https://pokeapi.co/api/v2/type/${string}`);
@@ -37,6 +37,7 @@ export const requestPokemon = async (id, dispatch, action) => {
 
     if (fetchedPokemon.error) {
         fetchedPokemon = await getPokemon(id);
+        if (!fetchedPokemon.sprite) fetchedPokemon.sprite = AWS_BUCKET_URL + `${id}.gif`
         await storage.addToStorage('pokemon', id, fetchedPokemon);
     }
 

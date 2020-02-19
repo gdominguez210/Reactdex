@@ -41,3 +41,5 @@ export const POKEMON_TYPE_COLORS = {
     "steel": "#B8B8D0",
     "fairy": "#EE99AC"
 }
+
+export const AWS_BUCKET_URL = 'https://reactdex-sprites.s3.amazonaws.com/'
