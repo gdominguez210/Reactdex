@@ -36,7 +36,6 @@ export const handleStats = (stats) => {
     return data;
 }
 export const parseMoves = (moves) => {
-    debugger
     let parsedMoves = moves.map(item => {
         return {
             order: moveOrder(item),

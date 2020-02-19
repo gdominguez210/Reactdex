@@ -20,6 +20,17 @@ export const getPokemon = async (pokeId) => {
     return pokemon;
 }
 
+export const getIndex = async (url = `https://pokeapi.co/api/v2/pokemon/`) => {
+    let response = await fetch(url);
+    let index = await response.json();
+    return index;
+}
+
+export const requestIndex = async (url, dispatch, action) => {
+    let index = await getIndex(url);
+    dispatch(action(index));
+}
+
 export const requestPokemon = async (id, dispatch, action) => {
 
     let fetchedPokemon = await storage.getFromStorage('pokemon', id);

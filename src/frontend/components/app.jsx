@@ -3,13 +3,13 @@ import { PokemonUI } from './pokemon/pokemon'
 import { getRandomId, getRandomTypeId } from '../util/pokemon_util'
 import { Provider } from 'react-redux';
 import SearchBar from './search/search_bar';
-import Sidebar from './sidebar/sidebar';
+import { StyledSidebar } from './sidebar/styled_sidebar';
 
 const App = ({ store }) => {
 
     return (
         <Provider store={store}>
-            <Sidebar />
+            <StyledSidebar />
             <PokemonUI test={'test'} identifier={1} pokeType={getRandomTypeId()}>
                 <SearchBar>
 
