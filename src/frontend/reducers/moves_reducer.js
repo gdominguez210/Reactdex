@@ -1,5 +1,5 @@
 import { RECEIVE_MOVE, RECEIVE_MOVES } from '../actions/moves_actions';
-
+import { RECEIVE_POKEMON } from '../actions/pokemon_actions';
 const movesReducer = (state = {}, action) => {
 
     Object.freeze(state);
@@ -9,6 +9,8 @@ const movesReducer = (state = {}, action) => {
             return Object.assign({}, state, { [action.payload.name]: action.payload });
         case RECEIVE_MOVES:
             return action.payload;
+        case RECEIVE_POKEMON:
+            return {};
         default:
             return state;
     }

@@ -26,7 +26,7 @@ export const PokemonMoves = (props) => {
         setOffset(6);
     }, [pokemon])
 
-    const moveItems = movesArr.length > 0 ? movesArr.map((move, idx) => <StyledPokemonMoveItem key={idx} move={move} />) : null;
+    const moveItems = movesArr.length > 0 ? movesArr.map((move, idx) => <StyledPokemonMoveItem key={idx} move={move} />) : <div>Loading...</div>;
     return (
         <div className={className}>
             {moveItems}

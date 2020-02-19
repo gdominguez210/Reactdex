@@ -45,3 +45,9 @@ section.container {
     height: 100%;
     overflow: hidden;
 }
+
+.search-bar-container > * {
+    flex: 1;
+    display: flex;
+    font-size:1.5em;
+}
