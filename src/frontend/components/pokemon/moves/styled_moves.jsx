@@ -6,4 +6,6 @@ export const StyledPokemonMoves = styled(PokemonMoves)`
     max-height: 100%;
     overflow-y:scroll;
     margin-right:-16px;
+    position:relative;
+    overflow-x:hidden;
 `

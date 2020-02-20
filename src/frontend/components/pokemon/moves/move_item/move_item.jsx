@@ -6,17 +6,17 @@ import { selectMoves } from '../../../../selectors/moves_selector';
 import { receiveMove } from '../../../../actions/moves_actions';
 import { POKEMON_TYPE_COLORS } from '../../../../util/constants';
 export const PokemonMoveItem = (props) => {
-    const { className, move } = props;
-    const style = {
+    const { className, move, loading } = props;
+    const style = loading ? null : {
         backgroundColor: POKEMON_TYPE_COLORS[move.type.name]
     }
     return (
         <div className={className} style={style}>
-            <ul>
+            {loading ? <p>Loading...</p> : <ul>
                 <li>{handleName(move.name)}</li>
                 <li>{handleName(move.learn_method)}</li>
                 <li>{move.level_learned}</li>
-            </ul>
+            </ul>}
         </div>
     )
 }

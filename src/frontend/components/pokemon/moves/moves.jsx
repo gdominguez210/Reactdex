@@ -6,6 +6,7 @@ import { parseMoves } from '../../../util/pokemon_util';
 import { DynamicModule } from '../../lazyload/dynamic_module/dynamic_module'
 import StyledPokemonMoveItem from './move_item/styled_move_item'
 import { LocationObserver } from '../../lazyload/intersection_observer/intersection_observer';
+import { StyledArrow } from '../../lazyload/arrow/styled_arrow';
 import { requestMove, requestMoves } from '../../../util/pokemon_api_util';
 import { receiveMove, receiveMoves } from '../../../actions/moves_actions';
 
@@ -17,6 +18,7 @@ export const PokemonMoves = (props) => {
     const movesArr = Object.values(useSelector(selectMoves, shallowEqual));
     const pokemon = useSelector(selectPokemon);
     const [offset, setOffset] = useState(6);
+    const [loading, setLoading] = useState(false);
     const initialLoadedMoves = [];
     for (let i = 0; i < 6; i++) {
         initialLoadedMoves.push(parsedMoves[i]);
@@ -24,18 +26,27 @@ export const PokemonMoves = (props) => {
     useEffect(() => {
         requestMoves(initialLoadedMoves, dispatch, receiveMoves);
         setOffset(6);
-    }, [pokemon])
+    }, Object.values(pokemon));
 
     const moveItems = movesArr.length > 0 ? movesArr.map((move, idx) => <StyledPokemonMoveItem key={idx} move={move} />) : <div>Loading...</div>;
+    const intersectionObserver = movesArr.length >= 5 ?
+        <LocationObserver continueObserving={true} onIntersection={async () => {
+            if (offset < parsedMoves.length) {
+                console.log('detected intersection')
+                await setLoading(true);
+                await requestMove(parsedMoves[offset], dispatch, receiveMove)
+                await setOffset(offset + 1);
+                await setLoading(false);
+            }
+        }} /> : null;
     return (
-        <div className={className}>
-            {moveItems}
-            <LocationObserver continueObserving={true} onIntersection={() => {
-                if (offset < parsedMoves.length) {
-                    requestMove(parsedMoves[offset], dispatch, receiveMove)
-                    setOffset(offset + 1);
-                }
-            }} />
+        <div style={{ position: 'relative' }}>
+            <div className={className}>
+                {moveItems}
+                {loading ? <StyledPokemonMoveItem loading={true} /> : null}
+                {intersectionObserver}
+            </div>
+            {moveItems.length === parsedMoves.length ? null : <StyledArrow />}
         </div>
     )
 }

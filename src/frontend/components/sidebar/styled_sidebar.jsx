@@ -7,4 +7,5 @@ export const StyledSidebar = styled(Sidebar)`
     flex: 1;
     background: #292020;
     overflow-y: auto;
+    position: relative;
 `
