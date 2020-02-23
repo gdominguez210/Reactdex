@@ -1,2 +1,2 @@
 # Reactdex
-Work in progress, React-based Pokedex app.
+React-based Pokedex app utilizing React/Redux Hooks, Styled Components and the PokeAPI.
