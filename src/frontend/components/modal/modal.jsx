@@ -16,7 +16,10 @@ export const Modal = (props) => {
         modal ?
             <div className={className} onClick={() => { dispatch(closeModal()) }}>
                 <div onClick={e => e.stopPropagation()}>
-                    {component}
+                    <div>
+                        <div onClick={() => { dispatch(closeModal()) }}>Close</div>
+                        {component}
+                    </div>
                 </div>
             </div> : null
     )

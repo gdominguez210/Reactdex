@@ -7,7 +7,7 @@ export const StyledModal = styled(Modal)`
     bottom: 0;
     right: 0;
     left: 0;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.75);
     z-index: 50;
 
     > div {
@@ -15,6 +15,13 @@ export const StyledModal = styled(Modal)`
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
+        padding: 20px;
+        background: #FFFFFF;
+        border-radius: 4px;
+
+        > div {
+            position: relative;
+        }
     }
 
 `
