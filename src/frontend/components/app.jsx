@@ -4,7 +4,7 @@ import { getRandomId, getRandomTypeId } from '../util/pokemon_util'
 import { Provider } from 'react-redux';
 import SearchBar from './search/search_bar';
 import { StyledSidebar } from './sidebar/styled_sidebar';
-
+import { StyledModal } from './modal/styled_modal';
 const App = ({ store }) => {
 
     return (
@@ -15,6 +15,7 @@ const App = ({ store }) => {
 
                 </SearchBar>
             </PokemonUI>
+            <StyledModal />
         </Provider>
     )
 }
