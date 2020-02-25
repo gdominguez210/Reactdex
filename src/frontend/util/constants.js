@@ -43,3 +43,4 @@ export const POKEMON_TYPE_COLORS = {
 }
 
 export const AWS_BUCKET_URL = 'https://reactdex-sprites.s3.amazonaws.com/'
+export const AWS_INDEX_BUCKET_URL = 'https://reactdex-sprites.s3.amazonaws.com/index/40x30/'

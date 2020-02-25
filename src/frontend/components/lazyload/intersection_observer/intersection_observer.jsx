@@ -49,7 +49,7 @@ export class LocationObserver extends React.Component {
     render() {
         const { continueObserving, children = null } = this.props;
         return (
-            <div className="intersectionObserver" ref={this.targetContainerRef}>
+            <div className="intersection-observer" ref={this.targetContainerRef}>
                 {continueObserving ? children : this.state.hasIntersected && children}
             </div>
         )

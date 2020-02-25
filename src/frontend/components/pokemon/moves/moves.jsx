@@ -32,7 +32,6 @@ export const PokemonMoves = (props) => {
     const intersectionObserver = movesArr.length >= 5 ?
         <LocationObserver continueObserving={true} onIntersection={async () => {
             if (offset < parsedMoves.length) {
-                console.log('detected intersection')
                 await setLoading(true);
                 await requestMove(parsedMoves[offset], dispatch, receiveMove)
                 await setOffset(offset + 1);

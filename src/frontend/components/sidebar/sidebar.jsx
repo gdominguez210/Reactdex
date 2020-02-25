@@ -9,7 +9,7 @@ export const Sidebar = (props) => {
     const { className } = props;
     let dispatch = useDispatch();
     let index = useSelector(selectIndex, shallowEqual);
-
+    console.log(index.next);
     useEffect(() => {
         requestIndex(undefined, dispatch, receiveIndex);
     }, []);
@@ -18,6 +18,7 @@ export const Sidebar = (props) => {
     let intersectionObserver = index.results.length >= 20 ? <LocationObserver continueObserving={true} onIntersection={() => {
         requestIndex(index.next, dispatch, receiveIndex);
     }} /> : null;
+    console.log(intersectionObserver);
     return (
         <aside className={className}>
             {indexItems}

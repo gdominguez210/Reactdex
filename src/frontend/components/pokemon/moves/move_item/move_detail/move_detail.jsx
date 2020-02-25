@@ -6,7 +6,6 @@ export const MoveDetails = (props) => {
     const { name } = props;
     const moves = useSelector(selectMoves, shallowEqual)
     const move = moves[name];
-    console.log(move);
     return (
         <div>
             <h2>{move.name}</h2>
