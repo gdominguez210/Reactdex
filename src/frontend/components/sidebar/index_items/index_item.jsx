@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch, shallowEqual } from 'react-redux';
 import { capitalize } from '../../../util/pokemon_util';
+
 import { requestPokemon } from '../../../util/pokemon_api_util';
+
 import { receivePokemon } from '../../../actions/pokemon_actions';
 import { AWS_INDEX_BUCKET_URL } from '../../../util/constants';
 export const IndexItem = (props) => {

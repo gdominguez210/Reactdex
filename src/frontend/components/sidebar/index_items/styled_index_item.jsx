@@ -14,17 +14,10 @@ export const StyledIndexItem = styled(IndexItem)`
     transition: .2s all linear;
     border: 3px solid transparent; 
     position: relative;
-
-    .active {
-        border: 3px solid rgba(255,255,255, .1);
-        cursor: pointer;
-        color: #FFFFFF;
-        transform: translateX(5px);
-    }
+    cursor: pointer;
     
     :hover {
         border: 3px solid rgba(255,255,255, .1);
-        cursor: pointer;
         color: #FFFFFF;
         transform: translateX(5px);
     }
@@ -68,4 +61,10 @@ export const StyledIndexItem = styled(IndexItem)`
     }
 
 
+`
+
+export const ActiveStyledIndexItem = styled(StyledIndexItem)`
+    border: 3px solid rgba(255,255,255, .1);
+    color: #FFFFFF;
+    transform: translateX(5px);
 `
