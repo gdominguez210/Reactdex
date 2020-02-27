@@ -24,7 +24,8 @@ export const StyledIndexItem = styled(IndexItem)`
     border: 3px solid transparent; 
     position: relative;
     cursor: pointer;
-    
+    filter: grayscale(45%);
+
     :hover {
         border: 3px solid rgba(255,255,255, .1);
         color: #FFFFFF;
@@ -76,7 +77,7 @@ export const ActiveStyledIndexItem = styled(StyledIndexItem)`
     border: 3px solid rgba(255,255,255, .1);
     color: #FFFFFF;
     transform: translateX(5px);
-
+    filter:grayscale(0%);
     ul {
         li {
             :first-child {
