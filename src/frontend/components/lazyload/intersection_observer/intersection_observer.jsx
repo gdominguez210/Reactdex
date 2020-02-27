@@ -42,7 +42,7 @@ export class LocationObserver extends React.Component {
             }
 
         } else if (continueObserving && onIntersection) {
-            onIntersection(entries);
+            if (entries[0].intersectionRatio > 0) onIntersection(entries);
         }
     }
 

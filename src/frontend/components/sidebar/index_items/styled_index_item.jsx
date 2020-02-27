@@ -1,7 +1,16 @@
 import React from 'react';
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 import { IndexItem } from './index_item';
 
+export const bounce = keyframes`
+        0%   { transform: scale(1.5,1.5)      translateY(0); }
+        10%  { transform: scale(1.6,1.4)   translateY(0); }
+        30%  { transform: scale(1.4, 1.6)   translateY(-10%); }
+        50%  { transform: scale(1.55, 1.45) translateY(0); }
+        57%  { transform: scale(1.5,1.5)      translateY(-5%); }
+        64%  { transform: scale(1.5,1.5)      translateY(0); }
+        100% { transform: scale(1.5,1.5)      translateY(0); }
+`
 
 export const StyledIndexItem = styled(IndexItem)`
 
@@ -67,4 +76,18 @@ export const ActiveStyledIndexItem = styled(StyledIndexItem)`
     border: 3px solid rgba(255,255,255, .1);
     color: #FFFFFF;
     transform: translateX(5px);
+
+    ul {
+        li {
+            :first-child {
+                img {
+                    animation-name: ${bounce};
+                    animation-duration: 2s;
+                    animation-iteration-count: infinite;
+                    animation-timing-function: cubic-bezier(0.280, 0.840, 0.420, 1);
+                }
+            }
+        }
+    }
 `
+
