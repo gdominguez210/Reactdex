@@ -17,22 +17,20 @@ export const Sidebar = (props) => {
 
     const pokemonState = useSelector(selectPokemon, shallowEqual);
     const pokemon = extractPokemon(pokemonState);
-
-    let indexItems = Object.values(index).length > 0 ? index.results.map((item, idx) => {
-        return pokemon && item.name === pokemon.name ?
-            <ActiveStyledIndexItem name={item.name} id={idx + 1} /> :
-            <StyledIndexItem name={item.name} id={idx + 1} />
-    }) : null;
+    const active = (pokemonItem, indexItem) => pokemonItem && indexItem.name === pokemonItem.name;
+    let indexItems = Object.values(index).length > 0 ? index.results.map((item, idx) => <StyledIndexItem active={active(pokemon, item)} name={item.name} id={idx + 1} />) : null;
 
     let intersectionObserver = index.results.length >= 20 ?
         <LocationObserver continueObserving={true} onIntersection={() => {
             requestIndex(index.next, dispatch, receiveIndex);
         }} /> : null;
-        
+
     return (
         <aside className={className}>
+            <div>
             {indexItems}
             {intersectionObserver}
+            </div>
         </aside>
     )
 }

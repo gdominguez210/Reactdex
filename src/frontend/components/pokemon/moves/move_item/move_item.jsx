@@ -9,12 +9,9 @@ import { openModal } from '../../../../actions/modal_actions';
 
 export const PokemonMoveItem = (props) => {
     const { className, move, loading } = props;
-    const style = loading ? null : {
-        backgroundColor: POKEMON_TYPE_COLORS[move.type.name]
-    }
     const dispatch = useDispatch();
     return (
-        <div className={className} style={style} onClick={() => dispatch(openModal({ component: 'MoveDetails', data: move.name }))}>
+        <div className={className} onClick={() => dispatch(openModal({ component: 'MoveDetails', data: move.name }))}>
             {loading ? <p>Loading...</p> : <ul>
                 <li>{handleName(move.name)}</li>
                 <li>{handleName(move.learn_method)}</li>

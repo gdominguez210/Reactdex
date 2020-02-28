@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { typeColor } from '../../../styles/pokemonStyles';
+import { typeColor } from '../../../styles/theme';
 import { StatRadar } from '../../graph/stat_radar_graph';
 import { StyledPokemonMoves } from '../moves/styled_moves'
 import { PokemonDetails } from './pokemon_details/pokemon_details';
@@ -16,7 +16,7 @@ export const PokemonItem = (props) => {
             <div className="pokemon-item">
                 <div className="inner-wrap">
                     <div className="pokemon-detail-wrap">
-                        <PokemonDetails sprite={sprite} sprites={sprites} types={typeItems} name={name} />
+                        <PokemonDetails sprite={sprite} sprites={sprites} types={typeItems} name={name} id={id} />
                         {/* <StatRadar stats={stats} /> */}
                     </div>
                     <StyledPokemonMoves moves={moves} />

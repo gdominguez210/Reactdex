@@ -42,7 +42,6 @@ export const PokemonMoves = (props) => {
         <div style={{ position: 'relative' }}>
             <div className={className}>
                 {moveItems}
-                {loading ? <StyledPokemonMoveItem loading={true} /> : null}
                 {intersectionObserver}
             </div>
             {moveItems.length === parsedMoves.length ? null : <StyledArrow />}

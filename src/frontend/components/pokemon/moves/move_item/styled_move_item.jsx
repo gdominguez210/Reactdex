@@ -10,6 +10,7 @@ const StyledPokemonMoveItem = styled(PokemonMoveItem)`
     font-size: 2em;
     color: #FFFFFF;
     text-shadow: 0px 0px 5px #333333;
+    background-color: ${props => props.theme[props.move.type.name]};
 
     :first-child {
         margin-top: 0px;
