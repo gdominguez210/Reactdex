@@ -54,9 +54,9 @@ export const StyledPokemonItem = styled(PokemonItem)`
                 display: block;
                 z-index:0;
                 background: -moz-radial-gradient(bottom center, ellipse cover, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 33%, rgba(0,0,0,0.5) 100%); /* FF3.6-15 */
-background: -webkit-radial-gradient(bottom center, ellipse cover, rgba(0,0,0,0) 0%,rgba(0,0,0,0) 33%,rgba(0,0,0,0.5) 100%); /* Chrome10-25,Safari5.1-6 */
-background: radial-gradient(ellipse at bottom center, rgba(0,0,0,0) 0%,rgba(0,0,0,0) 33%,rgba(0,0,0,0.5) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#80000000',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+                background: -webkit-radial-gradient(bottom center, ellipse cover, rgba(0,0,0,0) 0%,rgba(0,0,0,0) 33%,rgba(0,0,0,0.5) 100%); /* Chrome10-25,Safari5.1-6 */
+                background: radial-gradient(ellipse at bottom center, rgba(0,0,0,0) 0%,rgba(0,0,0,0) 33%,rgba(0,0,0,0.5) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+                filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#80000000',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
             }
         }
 
