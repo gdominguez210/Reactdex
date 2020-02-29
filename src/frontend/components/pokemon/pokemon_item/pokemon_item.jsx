@@ -16,8 +16,8 @@ export const PokemonItem = (props) => {
             <div className="pokemon-item">
                 <div className="inner-wrap">
                     <div className="pokemon-detail-wrap">
-                        <PokemonDetails sprite={sprite} sprites={sprites} types={typeItems} name={name} id={id} />
-                        {/* <StatRadar stats={stats} /> */}
+                        <PokemonDetails stats={stats} sprite={sprite} sprites={sprites} types={typeItems} name={name} id={id} />
+
                     </div>
                     <StyledPokemonMoves moves={moves} />
                 </div>

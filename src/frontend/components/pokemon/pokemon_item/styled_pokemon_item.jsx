@@ -30,6 +30,7 @@ export const StyledPokemonItem = styled(PokemonItem)`
         background: #FFFFFF;
         position:relative;
         z-index:1;
+        overflow-y: auto;
 
         .pokemon-header {
             min-height: 250px;

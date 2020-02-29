@@ -4,29 +4,13 @@ import { extractPokemon } from '../../../../util/pokemon_util';
 import { selectPokemon } from '../../../../selectors/pokemon_selector';
 import { capitalize } from '../../../../util/pokemon_util'
 import { Optimg } from '../../../image/image';
+import { StyledPokemonStats } from '../pokemon_stats/styled_pokemon_stats';
 
 export const PokemonDetails = (props) => {
 
-    const { sprites, sprite, id, name, types, className } = props;
+    const { sprites, sprite, id, name, types, className, stats } = props;
     const [loaded, setLoaded] = useState(false);
     const [url, setUrl] = useState('');
-    const pokemonState = useSelector(selectPokemon, shallowEqual);
-    const pokemon = extractPokemon(pokemonState);
-    // let pokemonImg = new Image();
-
-    // useEffect(() => {
-    //     setLoaded(false);
-    //     setUrl('');
-    // }, [pokemon]);
-
-    // pokemonImg.onload = async () => {
-    //     setLoaded(true)
-    //     setUrl(pokemonImg.src);
-    // };
-
-    // if (url.length === 0) pokemonImg.src = sprite;
-    // console.log(pokemon);
-    console.log(sprite);
     return (
         <div className="pokemon-details-container" >
             <div className="pokemon-details" >
@@ -41,6 +25,7 @@ export const PokemonDetails = (props) => {
                 <div className="types">
                     {types}
                 </div>
+                <StyledPokemonStats stats={stats} />
             </div>
         </div>)
 }
