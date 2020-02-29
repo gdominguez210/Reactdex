@@ -32,6 +32,22 @@ export const StyledPokemonItem = styled(PokemonItem)`
         z-index:1;
         overflow-y: auto;
 
+        .row {
+            display: flex;
+            font-size: .75em;
+        }
+        .types {
+            padding: 20px;
+            font-size: 1em;
+            background: #f1f1f1;
+            margin: 10px;
+            border-radius: 4px;
+            
+            h3 {
+                margin-bottom: 10px;
+            }
+
+        }
         .pokemon-header {
             min-height: 250px;
             position:relative;
@@ -85,10 +101,14 @@ export const StyledPokemonItem = styled(PokemonItem)`
         display:flex;
 
         > div {
-            flex: 1;
             max-height: 100%;
             height: 100%;
+            transition: .3s all linear;
+            width: 100%;
             
+            :first-child:nth-last-child(n + 2), :first-child:nth-last-child(n + 2) ~ * {
+            width: 50%;
+            }
         }
     }
 `

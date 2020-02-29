@@ -9,17 +9,19 @@ export const PokemonItem = (props) => {
     const { pokemon, className } = props;
     const { name, sprite, sprites, id, stats, moves, types, abilities } = pokemon;
     const sortedTypes = types.sort((a, b) => a.slot - b.slot);
-    const typeItems = sortedTypes.map(item => <span className="type" style={typeColor(item.type.name)} key={item.type.name}> {capitalize(item.type.name)} </span >)
-
+    const [displayMoves, setDisplayMoves] = useState(false);
+    const toggleDisplay = () => {
+        displayMoves ? setDisplayMoves(false) : setDisplayMoves(true);
+    }
     return (
         <div className={className}>
             <div className="pokemon-item">
                 <div className="inner-wrap">
                     <div className="pokemon-detail-wrap">
-                        <PokemonDetails stats={stats} sprite={sprite} sprites={sprites} types={typeItems} name={name} id={id} />
-
+                        <div onClick={toggleDisplay}>Show Moves</div>
+                        <PokemonDetails stats={stats} abilities={abilities} sprite={sprite} sprites={sprites} types={sortedTypes} name={name} id={id} />
                     </div>
-                    <StyledPokemonMoves moves={moves} />
+                    {displayMoves ? <StyledPokemonMoves moves={moves} /> : null}
                 </div>
             </div>
         </div >
