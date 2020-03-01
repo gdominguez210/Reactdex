@@ -4,7 +4,7 @@ import { StyledPokemonType } from './styled_pokemon_type';
 export const PokemonTypes = (props) => {
 
     const { types } = props;
-    const typeItems = types.map(type => <StyledPokemonType key={type.name} type={type} />);
+    const typeItems = types.map(type => <div><StyledPokemonType key={type.name} type={type} /></div>);
 
     return (
         <div className="types">

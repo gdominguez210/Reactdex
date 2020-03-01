@@ -39,8 +39,16 @@ export const PokemonMoves = (props) => {
             }
         }} /> : null;
     return (
-        <div style={{ position: 'relative' }}>
-            <div className={className}>
+        <div className={className}>
+            <div className="moves-header">
+                <h2>Moves</h2>
+                <ul>
+                    <li>Name</li>
+                    <li>Method</li>
+                    <li>Level</li>
+                </ul>
+            </div>
+            <div className='scrollable-container'>
                 {moveItems}
                 {intersectionObserver}
             </div>

@@ -33,13 +33,15 @@ export const StyledPokemonItem = styled(PokemonItem)`
         overflow-y: auto;
 
         .row {
-            display: flex;
             font-size: .75em;
+
+            > div {
+                display: inline-block;
+            }
         }
         .types {
             padding: 20px;
             font-size: 1em;
-            background: #f1f1f1;
             margin: 10px;
             border-radius: 4px;
             
@@ -47,6 +49,9 @@ export const StyledPokemonItem = styled(PokemonItem)`
                 margin-bottom: 10px;
             }
 
+            > div span {
+                margin: 10px;
+            }
         }
         .pokemon-header {
             min-height: 250px;

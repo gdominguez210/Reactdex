@@ -6,10 +6,10 @@ export const PokemonAbilityItem = (props) => {
 
     return (
         <div className={className}>
-            <p>
+            <div>
                 {handleName(ability.name)}
-            </p>
-            {is_hidden ? <p>Hidden</p> : null}
+            </div>
+            {is_hidden ? <div>Hidden</div> : null}
         </div>
     )
 }
