@@ -19,6 +19,11 @@ export const getPokemon = async (pokeId) => {
     let pokemon = await response.json();
     return pokemon;
 }
+export const getPokemonSpecies = async (pokeId) => {
+    let response = await fetch(`https://pokeapi.co/api/v2/pokemon-species/${pokeId}`);
+    let pokemonSpecies = await response.json();
+    return pokemonSpecies;
+}
 
 export const getIndex = async (url = `https://pokeapi.co/api/v2/pokemon/`) => {
     let response = await fetch(url);
@@ -37,8 +42,11 @@ export const requestPokemon = async (id, dispatch, action) => {
 
     if (fetchedPokemon.error) {
         fetchedPokemon = await getPokemon(id);
+        let fetchedSpecies = await getPokemonSpecies(id);
         if (!fetchedPokemon.sprite) fetchedPokemon.sprite = AWS_BUCKET_URL + `${id}.gif`
-        await storage.addToStorage('pokemon', id, fetchedPokemon);
+        let fetchedPokemonSpecies = { ...fetchedPokemon, ...fetchedSpecies }
+        await storage.addToStorage('pokemon', id, fetchedPokemonSpecies);
+        fetchedPokemon = fetchedPokemonSpecies;
     }
 
     dispatch(action(fetchedPokemon));

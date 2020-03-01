@@ -7,10 +7,10 @@ import { Optimg } from '../../../image/image';
 import { StyledPokemonStats } from '../pokemon_stats/styled_pokemon_stats';
 import { PokemonTypes } from '../pokemon_type/pokemon_types';
 import { StyledPokemonAbilities } from '../pokemon_abilities/styled_pokemon_abilities';
-
+import { StyledPokemonDescription } from '../pokemon_description/styled_pokemon_description';
 export const PokemonDetails = (props) => {
 
-    const { sprites, sprite, id, name, types, className, stats, abilities } = props;
+    const { sprites, sprite, id, name, types, className, stats, abilities, flavorTexts } = props;
 
     const [loaded, setLoaded] = useState(false);
     const [url, setUrl] = useState('');
@@ -28,6 +28,7 @@ export const PokemonDetails = (props) => {
                     <StyledPokemonAbilities abilities={abilities} />
                     <PokemonTypes types={types} />
                 </div>
+                <StyledPokemonDescription flavorTexts={flavorTexts} />
                 <StyledPokemonStats stats={stats} />
             </div>
         </div>)

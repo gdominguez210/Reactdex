@@ -7,7 +7,7 @@ import { capitalize } from '../../../util/pokemon_util';
 export const PokemonItem = (props) => {
 
     const { pokemon, className } = props;
-    const { name, sprite, sprites, id, stats, moves, types, abilities } = pokemon;
+    const { name, sprite, sprites, id, stats, moves, types, abilities, flavor_text_entries } = pokemon;
     const sortedTypes = types.sort((a, b) => a.slot - b.slot);
     const [displayMoves, setDisplayMoves] = useState(false);
     const toggleDisplay = () => {
@@ -19,7 +19,7 @@ export const PokemonItem = (props) => {
                 <div className="inner-wrap">
                     <div className="pokemon-detail-wrap">
                         <div onClick={toggleDisplay}>Show Moves</div>
-                        <PokemonDetails stats={stats} abilities={abilities} sprite={sprite} sprites={sprites} types={sortedTypes} name={name} id={id} />
+                        <PokemonDetails flavorTexts={flavor_text_entries} stats={stats} abilities={abilities} sprite={sprite} sprites={sprites} types={sortedTypes} name={name} id={id} />
                     </div>
                     {displayMoves ? <StyledPokemonMoves moves={moves} /> : null}
                 </div>
